@@ -1,0 +1,32 @@
+def prim(graph, n):
+    selected = [False] * n
+    selected[0] = True
+
+    print("MST Edges:")
+
+    for _ in range(n - 1):
+        min_edge = float('inf')
+        x = y = 0
+
+        for i in range(n):
+            if selected[i]:
+                for j in range(n):
+                    if not selected[j] and graph[i][j] != 0:
+                        if graph[i][j] < min_edge:
+                            min_edge = graph[i][j]
+                            x = i
+                            y = j
+
+        print(x, "-", y, "=", graph[x][y])
+        selected[y] = True
+
+
+# -------- USER INPUT --------
+n = int(input("Enter number of vertices: "))
+graph = []
+
+print("Enter adjacency matrix:")
+for i in range(n):
+    graph.append(list(map(int, input().split())))
+
+prim(graph, n)
