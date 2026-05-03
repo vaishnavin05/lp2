@@ -18,7 +18,7 @@ def a_star(graph, start, goal, h):
         for neighbour, cost in graph[current]:
             temp_g = g[current] + cost
 
-            if neighbour not in g or temp_g < g[neighbor]:
+            if neighbour not in g or temp_g < g[neighbour]:
                 g[neighbour] = temp_g
                 parent[neighbour] = current
                 open_list.append(neighbour)
