@@ -1,0 +1,28 @@
+public class SelectionSortDemo {
+
+    // Method to perform selection sort
+    public static void selectionSort(List<Integer> arr) {
+        Integer n = arr.size();
+
+        for (Integer i = 0; i < n - 1; i++) {
+            Integer minIndex = i;
+
+            for (Integer j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // Swap
+            Integer temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+
+        System.debug('Sorted Array: ' + arr);
+    }
+}
+
+List<Integer> numbers = new List<Integer>{64, 25, 12, 22, 11};
+
+SelectionSortDemo.selectionSort(numbers);
