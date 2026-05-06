@@ -1,19 +1,27 @@
 def dfs(graph, node, visited):
-    if node not in visited:
-        print(node, end=" ")
-        visited.add(node)
+    visited.add(node)
+    print(node, end=" ")
 
-        for neighbour in graph[node]:
+    for neighbour in graph[node]:
+        if neighbour not in visited:
             dfs(graph, neighbour, visited)
 
-# -------- USER INPUT --------
+# -------- MAIN --------
 graph = {}
+
 n = int(input("Enter number of nodes: "))
 
+# Initialize nodes
 for i in range(n):
     node = input("Enter node: ")
-    neighbours = input(f"Enter neighbours of {node} (space separated): ").split()
-    graph[node] = neighbours
+    graph[node] = []
+
+# Input edges (undirected)
+e = int(input("Enter number of edges: "))
+for i in range(e):
+    u, v = input("Enter edge (u v): ").split()
+    graph[u].append(v)
+    graph[v].append(u)
 
 start = input("Enter starting node: ")
 
